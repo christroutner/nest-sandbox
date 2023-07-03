@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { DataSource } from 'typeorm';
+import { Cat } from './cats/entities/cat.entity';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -19,9 +21,13 @@ dotenv.config();
       database: process.env.DB_DATABASE,
       autoLoadEntities: true,
       synchronize: true,
+      entities: [Cat],
     }),
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+
+export class AppModule {
+  constructor(private dataSource: DataSource) {}
+}
