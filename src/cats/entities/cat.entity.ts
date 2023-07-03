@@ -1,7 +1,17 @@
+// interface Cat {
+//   name: string,
+//   age: number,
+//   breed: string
+// }
+
 export class Cat {
-  constructor(inObj = {}) {
-    this.name = inObj.name;
-    this.age = inObj.age;
-    this.breed = inObj.breed;
+  name: string;
+  age: number;
+  breed: string;
+
+  constructor({ name, age, breed }) {
+    this.name = name;
+    this.age = age;
+    this.breed = breed;
   }
 }
