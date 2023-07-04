@@ -12,15 +12,18 @@ export class CatsService {
     private catsRepository: Repository<Cat>,
   ) {}
 
-  create(createCatDto: CreateCatDto) {
+  async create(createCatDto: CreateCatDto): Promise<Cat> {
     console.log('createCatDto: ', createCatDto);
-    return 'This action adds a new cat';
+    // return 'This action adds a new cat';
+
+    const cat = this.catsRepository.create(createCatDto);
+    return await this.catsRepository.save(cat);
   }
 
   // async findAll(): Promise<Array<Cat>> {
-  findAll() {
-    return `This action returns all cats`;
-    // return await this.catRepository.find();
+  async findAll() {
+    // return `This action returns all cats`;
+    return await this.catsRepository.find();
   }
 
   findOne(id: number) {

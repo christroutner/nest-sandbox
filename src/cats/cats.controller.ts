@@ -17,6 +17,7 @@ export class CatsController {
 
   @Post()
   create(@Body() createCatDto: CreateCatDto) {
+    console.log('controller create() createCatDto: ', createCatDto)
     return this.catsService.create(createCatDto);
   }
 
