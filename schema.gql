@@ -1,0 +1,43 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Cat {
+  """id of the cat"""
+  userId: String!
+
+  """name of the cat"""
+  name: String!
+
+  """Age of the cat"""
+  age: Int!
+
+  """breed of the cat"""
+  breed: String!
+}
+
+type Query {
+  cats: [Cat!]!
+  cat(userId: String!): Cat!
+}
+
+type Mutation {
+  createCat(createCatInput: CreateCatDto!): Cat!
+  updateCat(updateCatInput: UpdateCatDto!): Cat!
+  removeCat(userId: String!): Cat!
+}
+
+input CreateCatDto {
+  """name of the cat"""
+  name: String!
+
+  """age of the cat"""
+  age: Int!
+
+  """breed of the cat"""
+  breed: String!
+}
+
+input UpdateCatDto {
+  userId: String!
+}

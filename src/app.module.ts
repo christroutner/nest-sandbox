@@ -5,6 +5,9 @@ import { CatsModule } from './cats/cats.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { Cat } from './cats/entities/cat.entity';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -22,6 +25,11 @@ dotenv.config();
       autoLoadEntities: true,
       synchronize: true,
       entities: [Cat],
+    }),
+    GraphQLModule.forRoot({
+      driver: ApolloDriver,
+      autoSchemaFile: './schema.gql',
+      // playground: true,
     }),
   ],
   controllers: [AppController],
